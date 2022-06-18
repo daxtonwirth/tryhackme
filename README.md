@@ -1,2 +1,2 @@
 # tryhackme
-Tryhackme notes and walthroughs
+Tryhackme notes and walkthroughs
