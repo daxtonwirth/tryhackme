@@ -69,10 +69,14 @@ anonymous- Skynet Anonymous Share
 - I connected to the anonymous share
 - `smbclient  '\\10.10.184.106\anonymous'`
 
-attention.txt: `A recent system malfunction has caused various passwords to be changed. All skynet employees are required to change their password after seeing this.
+#### SMB files
+attention.txt
+`A recent system malfunction has caused various passwords to be changed. All skynet employees are required to change their password after seeing this.
 -Miles Dyson`
 
-log1.txt: `cyborg007haloterminator
+log1.txt: 
+
+`cyborg007haloterminator
 terminator22596
 terminator219
 terminator20
@@ -103,3 +107,42 @@ alonsoterminator
 Walterminator
 79terminator6
 1996terminator`
+
+This appears to be a password list (due to special characters so lets try some of these passwords)
+
+The first one worked! Our first email looks interesting:
+
+![image](https://user-images.githubusercontent.com/66894542/176065869-a2c86dfe-e001-44f4-905e-cf37b712388e.png)
+
+We also have this weird encoded message in his inbox:
+![image](https://user-images.githubusercontent.com/66894542/176066664-b40ce327-9f1e-46a3-8d57-0a8cc6232c94.png)
+Which decode to this:
+`balls have zero to me to me to me to me to me to me to me to me to`
+Which is similar to this one:
+![image](https://user-images.githubusercontent.com/66894542/176066706-689ce617-2ea3-401e-8946-0b4f6db55c27.png)
+
+I did a quick [search]([https://languagelog.ldc.upenn.edu/nll/?p=33355](https://en.wikipedia.org/wiki/Language_creation_in_artificial_intelligence)) and found that computers made up this language at Facebook
+
+## Using found email creds to login to smb
+Lets try to log into milesdyson smb share now: 
+![image](https://user-images.githubusercontent.com/66894542/176068458-8cadd12f-eded-4d0b-ba3d-7ebef60be199.png)
+
+There were a lot of files but the one that stuck out the most was the one in the notes directory called important.txt that has a cms directory!
+![image](https://user-images.githubusercontent.com/66894542/176068788-d3cb799d-5f79-4505-affc-1a42b68baa34.png)
+
+![image](https://user-images.githubusercontent.com/66894542/176069036-37b0d4de-2190-4ebf-b169-db83d4545b4c.png)
+
+Doing a quick gobuster on it, I found an administrator page:
+```
+/.hta (Status: 403)
+/.htpasswd (Status: 403)
+/administrator (Status: 301)
+/.htaccess (Status: 403)
+/index.html (Status: 200)
+```
+
+And here we have a potentially vulnerable service:
+![image](https://user-images.githubusercontent.com/66894542/176069178-13c50c65-6916-404b-9252-2c402cbe679f.png)
+
+
+
