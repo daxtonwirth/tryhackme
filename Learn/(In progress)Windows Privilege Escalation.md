@@ -32,3 +32,9 @@
 ![image](https://user-images.githubusercontent.com/66894542/174424268-d7207371-f8eb-441c-bbaf-8850fa8f643f.png)
 - Then ran into an error where it was not connecting which other users where struggling with as well:
 ![image](https://user-images.githubusercontent.com/66894542/174424998-24ee3fb0-1d25-4d1e-9e89-a61d14418239.png)
+
+
+## Abusing Service Misconfigurations
+- Service Control Manager (SCM) manages windows services
+- service executables implement special functions to be able to communicate with the SCM, and therefore not any executable can be started as a service successfully
+- service also specifies the user account under which the service will run.
