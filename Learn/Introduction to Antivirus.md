@@ -7,3 +7,8 @@ Checks for current and newly installed files in real time (background)
 McAfee was first- made to "remove a virus named "Brain" that infected John McAfee's computer"
 
 AV software called scanners and look for viruses in both traditional and new ways
+ ## Features
+ 
+- Uncompressing/unarchiving ability as some malware may try to hide in an archived file.
+- Unpacker: process of restoring or decrypting the compressed executable files to the original. 
+- Emulator:  analyzes malware in a safe and isolated environment
