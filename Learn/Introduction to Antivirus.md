@@ -12,3 +12,9 @@ AV software called scanners and look for viruses in both traditional and new way
 - Uncompressing/unarchiving ability as some malware may try to hide in an archived file.
 - Unpacker: process of restoring or decrypting the compressed executable files to the original. 
 - Emulator:  analyzes malware in a safe and isolated environment
+
+Static: database of signatures
+
+EICAR: contains ASCII strings instead of real malware 
+
+Because of obfuscation techniques, heuristic and behavioral detection have become essential in today's modern AV products
